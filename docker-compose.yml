@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: mq_db
+      POSTGRES_USER: mq_user
+      POSTGRES_PASSWORD: mq_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  mq-back:
+    build:
+      context: ./
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/mq_db
+      - SPRING_DATASOURCE_USERNAME=mq_user
+      - SPRING_DATASOURCE_PASSWORD=mq_pass
+    depends_on:
+      - postgres
+
+  mq-frontend:
+    build:
+      context: ./
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - mq-back
+
+volumes:
+  pgdata:

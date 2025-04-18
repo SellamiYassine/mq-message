@@ -1,0 +1,10 @@
+# Dockerfile.frontend
+FROM node:20-alpine as build
+WORKDIR /app
+COPY ./mq-frontend .
+RUN npm install
+RUN npm run build -- --output-path=dist --configuration=production
+
+FROM nginx:alpine
+COPY --from=build /app/dist/browser /usr/share/nginx/html
+EXPOSE 80

@@ -1,0 +1,29 @@
+<mat-table [dataSource]="messages" class="mat-elevation-z2" style="width: 100%; margin-top: 16px;">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+    </ng-container>
+
+    <!-- Correlation ID Column -->
+    <ng-container matColumnDef="message">
+        <th mat-header-cell *matHeaderCellDef> Message</th>
+        <td mat-cell *matCellDef="let element"> {{ element.message }} </td>
+    </ng-container>
+
+    <!-- Received At Column -->
+    <ng-container matColumnDef="receivedDateTime">
+        <th mat-header-cell *matHeaderCellDef> receivedDateTime </th>
+        <td mat-cell *matCellDef="let element"> {{ element.receivedDateTime   }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            (click)="openDetail(row)"
+            style="cursor: pointer;">
+    </tr>
+
+</mat-table>

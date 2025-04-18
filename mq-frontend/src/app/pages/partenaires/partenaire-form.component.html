@@ -1,0 +1,42 @@
+<h2>Ajouter un partenaire</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Alias</mat-label>
+    <input matInput formControlName="alias">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Type</mat-label>
+    <input matInput formControlName="type">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Direction</mat-label>
+    <mat-select formControlName="direction">
+      <mat-option value="INBOUND">INBOUND</mat-option>
+      <mat-option value="OUTBOUND">OUTBOUND</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Application</mat-label>
+    <input matInput formControlName="application">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Processed Flow Type</mat-label>
+    <mat-select formControlName="processedFlowType">
+      <mat-option value="MESSAGE">MESSAGE</mat-option>
+      <mat-option value="ALERTING">ALERTING</mat-option>
+      <mat-option value="NOTIFICATION">NOTIFICATION</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Ajouter Partenaire</button>
+</form>

@@ -9,12 +9,11 @@
 
 ## Lancer le projet avec Docker
 
-1. Cloner le dépôt :
 ```bash
-git clone https://github.com/ton-utilisateur/ton-projet.git
-cd ton-projet
-./mvnw clean install -DskipTests
-cd mq-frontend
+git clone https://github.com/SellamiYassine/mq-message.git
+cd mq-back
+mvn clean install -DskipTests
+cd ../mq-frontend
 npm install --force
 npm run build
 cd ..
